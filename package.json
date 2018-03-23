@@ -1,6 +1,6 @@
 {
   "name": "discordapp-Lost-Legacy Mentor Bot"
-  "version": "0.0.0"
+  "version": "0.0.1"
   "description": "Lost-Legacy Mentor Bot for Lost-Legacy Comms",
   "main": "L-L_Mentor.js",
   "author": "JumpSuit",
@@ -10,8 +10,6 @@
   ],
   "dependencies": {
     "discord.js": "^11.2.1",
-    "giphy-wrapper": "ptte/node-giphy",
-    "imgur-search": "^1.0.1",
     "scripts": {
       "start": "node index.js"
       "start": "node L-L_Mentor.js"
