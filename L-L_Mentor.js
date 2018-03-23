@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require("./botconfig.json");
 const fs = require("fs");
-client.login(config.token);
+client.login(process.env.config.token);
 client.on('ready', () => { // Boots Bot
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
     client.user.setGame(`on ${client.guilds.size} servers`);
