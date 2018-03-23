@@ -1,0 +1,31 @@
+{
+  "name": "discordapp-Lost-lega cy mentor Bot"
+  "version": "0.0.1",
+  "description": "Lost-Legacy Mentor Bot for Lost-Legacy Comms",
+  "main": "L-L_Mentor.js",
+  "author": "JumpSuit",
+  "license": "ISC",
+  "keywords": [
+    "L-L_Mentor"
+  ],
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "giphy-wrapper": "ptte/node-giphy",
+    "imgur-search": "^1.0.1",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "urban": "^0.2.4"
+  },
+    "dependencies": {
+      "discord.js": "^3.6.2",
+      "imgur-search": "^1.0.1",
+      "giphy-wrapper": "ptte/node-giphy",
+      "urban": "^0.2.4"
+    },
+    "description": "A chat bot for your DiscordApp server",
+
+    "name": "discordapp-insombot",
+
+    "version": "0.9.0"
+  }
