@@ -14,13 +14,10 @@
     "request": "2.81.0",
     "scripts": {
       "start": "node index.js",
-      "start": "node L-L_Mentor.js",
-    }
-  },
-    "dependencies": {
-      "discord.js": "^3.6.2",
-      "imgur-search": "^1.0.1",
-      "giphy-wrapper": "ptte/node-giphy",
-      "urban": "^0.2.4",
+      "start": "node L-L_Mentor.js"
+      },
+    "imgur-search": "^1.0.1",
+    "giphy-wrapper": "ptte/node-giphy",
+    "urban": "^0.2.4",
     },
 },
