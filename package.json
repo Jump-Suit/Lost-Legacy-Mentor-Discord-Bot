@@ -7,7 +7,7 @@
   "license": "ISC",
   "keywords": [
     "L-L_Mentor"
-  ],
+    ],
   "dependencies": {
     "discord.js": "^11.2.1",
     "urban": "^0.2.4",
@@ -17,6 +17,6 @@
     "urban": "^0.2.4",
     "scripts": {
       "start": "node index.js",
-      "start": "node L-L_Mentor.js"
-    },
+      "start": "node L-L_Mentor.js",
+    }
 }
