@@ -18,4 +18,5 @@
       },
     "imgur-search": "^1.0.1",
     "giphy-wrapper": "ptte/node-giphy",
-    "urban": "^0.2.4",}
+    "urban": "^0.2.4",
+  };
