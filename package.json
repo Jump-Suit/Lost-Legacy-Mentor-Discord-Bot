@@ -1,7 +1,7 @@
 {
   "name": "discordapp-Lost-Legacy Mentor Bot"
-  "version/": "0.0.1"
-  "description/": "Lost-Legacy Mentor Bot for Lost-Legacy Comms",
+  "version"/: "0.0.1"
+  "description"/: "Lost-Legacy Mentor Bot for Lost-Legacy Comms",
   "main": "L-L_Mentor.js",
   "author": "JumpSuit",
   "license": "ISC",
