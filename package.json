@@ -15,7 +15,7 @@
     "scripts": {
       "start": "node index.js",
       "start": "node L-L_Mentor.js",
-    },
+    }
   },
     "dependencies": {
       "discord.js": "^3.6.2",
