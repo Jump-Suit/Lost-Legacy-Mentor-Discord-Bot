@@ -3,6 +3,9 @@ const client = new Discord.Client();
 const config = require("./botconfig.json");
 const fs = require("fs");
 client.login(config.token);
+
+// Listener Event: Bot Launcher
+
 client.on('ready', () => { // Boots Bot
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
     client.user.setGame(`on ${client.guilds.size} servers`);
@@ -118,7 +121,15 @@ client.on('message', message => { // add/remove Warframe role
         }
     }
 })
-client.on('message', message => { // Displays Help for Commands
+
+//Listener Event: User joining the discord server.
+client.on('guildMemberAdd', member => {
+    
+    console.log('User ' + member.username + ' has joined the server!') // Sends a message in console that someone joined the discord server.
+  
+    // Now, Lets add a role when they join. First, we need to get the role we want.
+    var role = member.guild.roles.find('name', 'User'); // This looks for the role in the server(guild, it seasrches by name, meaning you can change 'User' to the role you want.
+message => { // Displays Help for Commands
     if (message.content === (config.prefix + "help")) {  
         let member = message.member;
 
