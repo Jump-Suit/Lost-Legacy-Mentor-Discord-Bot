@@ -4,6 +4,11 @@ const config = require("./botconfig.json");
 const fs = require("fs");
 client.login(config.token);
 
+bot.commands = new Discord.Collection();
+
+fs.redir("./cmds/", (err, files) => {
+    if
+
 // Listener Event: Bot Launcher
 
 client.on('ready', () => { // Boots Bot
