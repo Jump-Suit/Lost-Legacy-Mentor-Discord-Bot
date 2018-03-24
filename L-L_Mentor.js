@@ -4,16 +4,31 @@ const config = require("./botconfig.json");
 const fs = require("fs");
 client.login(config.token);
 
-bot.commands = new Discord.Collection();
+client.commands = new Discord.Collection();
 
 fs.redir("./cmds/", (err, files) => {
-    if
+    if(err) console.error(err);
+    
+    Let jsfiles = files.filter(f => f.split(".").pop() === "js");
+    if(jsfiles.length <= 0) {
+        console.log("No commands to load!");
+        return;
+    }
+    
+    console.log(`Loading ${jsfiles.length} commands`);
+    
+    jsfiles.forEach((f, i) => {
+        let props = require(`.cmds/${f}`);
+        console.log(`$(i + 1}: ${f} loaded!`);
+        client.commands.set(f, props);
+    });
+});
 
 // Listener Event: Bot Launcher
 
 client.on('ready', () => { // Boots Bot
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-    console.log(bot.cmds);
+    console.log(client.cmds);
     client.user.setGame(`on ${client.guilds.size} servers`);
 });
 client.on('disconnected', function () { // Disconnects Bot
