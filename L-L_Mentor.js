@@ -8,6 +8,7 @@ client.login(config.token);
 
 client.on('ready', () => { // Boots Bot
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+    console.log(bot.cmds);
     client.user.setGame(`on ${client.guilds.size} servers`);
 });
 client.on('disconnected', function () { // Disconnects Bot
