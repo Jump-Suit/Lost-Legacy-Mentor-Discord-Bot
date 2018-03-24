@@ -129,7 +129,10 @@ client.on('guildMemberAdd', member => {
   
     // Now, Lets add a role when they join. First, we need to get the role we want.
     var role = member.guild.roles.find('name', 'User'); // This looks for the role in the server(guild, it seasrches by name, meaning you can change 'User' to the role you want.
-message => { // Displays Help for Commands
+    // Secondly, we will add the role.
+    member.addRole(role)
+});
+client.on('message', message => { // Displays Help for Commands
     if (message.content === (config.prefix + "help")) {  
         let member = message.member;
 
