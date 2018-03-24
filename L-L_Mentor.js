@@ -7,7 +7,7 @@ client.login(config.token);
 
 client.commands = new Discord.Collection();
 
-fs.redir("./cmds/", (err, files) => {
+fs.readdir("./cmds/", (err, files) => {
     if(err) console.error(err);
     
     let jsfiles = files.filter(f => f.split(".").pop() === "js");
