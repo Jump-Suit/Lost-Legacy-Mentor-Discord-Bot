@@ -1,7 +1,7 @@
 var env = require('../config.json'),
     Help = require('./Help.js'),
     Urban = require('./Urban.js');
-};
+
 var InsomBot = function () {
     this.keywords = env.keywords;
     this.Help = new Help;
