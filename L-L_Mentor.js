@@ -66,7 +66,7 @@ client.on("message", async message => { // Kick command
         await member.kick(reason)
         console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
-    })
+    });
 
 client.on('message', message => { // add/remove StarMade role
     if (message.content === (config.prefix + "addstarmade")) {
