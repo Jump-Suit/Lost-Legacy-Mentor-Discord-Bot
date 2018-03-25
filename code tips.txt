@@ -1,2 +1,0 @@
-For a single user simply put this at the start: if (!message.author.id == "YOUR ACCOUNT ID") return message.reply("Sorry but you can't use this command")
-For multiply: if (!message.author.some(r=>["ACCOUNT ID1", "ACCOUNT ID2"].includes(r.id)) ) return message.reply("Sorry but you can't use this command")

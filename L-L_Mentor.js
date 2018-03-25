@@ -5,6 +5,8 @@ const fs = require("fs");
 
 client.login(config.token);
 
+// Accessing Commands for the Bot Individually
+
 client.commands = new Discord.Collection();
 
 fs.readdir("./cmds/", (err, files) => {
