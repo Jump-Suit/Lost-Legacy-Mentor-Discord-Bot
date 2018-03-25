@@ -34,10 +34,12 @@ client.on('ready', () => { // Boots Bot
     console.log(client.cmds);
     client.user.setGame(`on ${client.guilds.size} servers`);
 });
+
 client.on('disconnected', function () { // Disconnects Bot
     console.log('Disconnected.');
     process.exit(1);
 });
+
 client.on("message", async message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
     if (message.content.indexOf(config.prefix) !== 0) return;
