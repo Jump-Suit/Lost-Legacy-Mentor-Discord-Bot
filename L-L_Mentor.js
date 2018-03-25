@@ -23,14 +23,14 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`$(i + 1}: ${f} loaded!`);
-        client.commands.set(f, props);
+        client.commands.set(props.help.name, props);
     });
 });
 
 // Listener Event: Bot Launcher
 
 client.on('ready', () => { // Boots Bot
-    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds. ${ bot.user.username }`);
     console.log(client.cmds);
     client.user.setGame(`on ${client.guilds.size} servers`);
 });
@@ -43,6 +43,15 @@ client.on('disconnected', function () { // Disconnects Bot
 client.on("message", async message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
     if (message.content.indexOf(config.prefix) !== 0) return;
+
+    if (!commands.startWuth(prefix)) return;
+    
+    let cmd = bot.commands.get(command.slice(prefix.length))
+    if (cmd) cmd.run(bot, client, args);
+    }
+});
+
+client.on("message", message => { // Kick command
     if (command === "kick") {
         if (message.member.roles.some(r => ["Administrator", "Moderator"].includes(r.name)))
             return message.reply("Sorry, you don't have permissions to use this!");
@@ -55,11 +64,10 @@ client.on("message", async message => {
         if (!reason)
             return message.reply("Please indicate a reason for the kick!");
         await member.kick(reason)
-            console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+        console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+    })
 
-    }
-});
 client.on('message', message => { // add/remove StarMade role
     if (message.content === (config.prefix + "addstarmade")) {
         let myRole = message.guild.roles.find("name", "StarMade");
