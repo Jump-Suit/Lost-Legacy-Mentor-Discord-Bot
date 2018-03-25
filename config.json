@@ -4,10 +4,10 @@
     "password": "esmgb504"
   },
   "keywords": {
-    "Help": "!commands",
-    "Giphy": "!giphy",
-    "Imgur": "!img",
-    "Urban": "!define"
+    "Help": ".commands",
+    "Giphy": ".giphy",
+    "Imgur": ".img",
+    "Urban": ".define"
   },
   "giphy_key": "dc6zaTOxFJmzC",
   "imgur_key": "",
