@@ -49,7 +49,7 @@ client.on("message", async message => {
     let command = messageArray[0];
     let args = messageArray.slice(1);
 
-    if (!commands.startWuth(prefix)) return;
+    if (!commands.startWith(prefix)) return;
 
     let cmd = bot.commands.get(command.slice(prefix.length))
     if (cmd) cmd.run(client, message, args);
