@@ -51,7 +51,7 @@ client.on("message", async message => {
     })
 });
 
-client.on("message", message => { // Kick command
+client.on("message", async message => { // Kick command
     if (command === "kick") {
         if (message.member.roles.some(r => ["Administrator", "Moderator"].includes(r.name)))
             return message.reply("Sorry, you don't have permissions to use this!");
