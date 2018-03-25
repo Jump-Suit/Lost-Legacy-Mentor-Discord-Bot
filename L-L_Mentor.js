@@ -44,29 +44,18 @@ client.on("message", async message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
     if (message.content.indexOf(config.prefix) !== 0) return;
 
-    if (!commands.startWuth(prefix)) return;
-    
-    let cmd = bot.commands.get(command.slice(prefix.length))
-    if (cmd) cmd.run(bot, client, args);
-    })
-});
 
-client.on("message", async message => { // Kick command
-    if (command === "kick") {
-        if (message.member.roles.some(r => ["Administrator", "Moderator"].includes(r.name)))
-            return message.reply("Sorry, you don't have permissions to use this!");
-        let member = message.mentions.members.first();
-        if (!member)
-            return message.reply("Please mention a valid member of this server");
-        if (!member.kickable)
-            return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-        let reason = args.slice(1).join(' ');
-        if (!reason)
-            return message.reply("Please indicate a reason for the kick!");
-        await member.kick(reason)
-        console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-        message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+    let messageArray = message.content.sp0lit(/\s+/g);
+    let command = messageArray[0];
+    let args = messageArray.slice(1);
+
+    if (!commands.startWuth(prefix)) return;
+
+    let cmd = bot.commands.get(command.slice(prefix.length))
+    if (cmd) cmd.run(client, message, args);
+  
     })
+
 
 client.on('message', message => { // add/remove StarMade role
     if (message.content === (config.prefix + "addstarmade")) {
