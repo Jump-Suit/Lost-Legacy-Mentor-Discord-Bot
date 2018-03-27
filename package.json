@@ -16,7 +16,6 @@
     "giphy-wrapper": "ptte/node-giphy",
     "urban": "^0.2.4",
     "scripts": {
-      "start": "node index.js",
       "start": "node L-L_Mentor.js"
     }
   }
