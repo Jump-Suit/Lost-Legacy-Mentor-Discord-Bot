@@ -1,6 +1,6 @@
 {
   "name": "Lost-Legacy-Mentor-Bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Lost-Legacy Mentor Bot for Lost-Legacy Comms",
   "main": "L-L_Mentor.js",
   "author": "JumpSuit",
@@ -8,6 +8,9 @@
   "keywords": [
     "L-L_Mentor"
     ],
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
   "dependencies": {
     "discord.js": "^11.2.1",
     "urban": "^0.2.4",
@@ -16,7 +19,7 @@
     "giphy-wrapper": "ptte/node-giphy",
     "urban": "^0.2.4",
     "scripts": {
-      "start": "node L-L_Mentor.js"
+      "test": "jshint L-L_Mentor.js"
     }
   }
 }
