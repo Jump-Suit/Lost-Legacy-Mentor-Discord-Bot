@@ -1,5 +1,9 @@
 {
   "name": "Lost-Legacy-Mentor-Bot",
+  "repository": {
+    "type": "js",
+    "url": "https://github.com/Jump-Suit/Lost-Legacy-Mentor-Discord-Bot/blob/master/L-L_Mentor.js"
+  },
   "version": "0.0.2",
   "description": "Lost-Legacy Mentor Bot for Lost-Legacy Comms",
   "main": "L-L_Mentor.js",
