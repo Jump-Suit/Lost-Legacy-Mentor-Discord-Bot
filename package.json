@@ -11,16 +11,23 @@
   "license": "ISC",
   "keywords": [
     "L-L_Mentor"
-    ],
+  ],
   "devDependencies": {
     "jshint": "^2.6.0"
   },
-    "discord.js": "^11.2.1",
-    "giphy-wrapper": "ptte/node-giphy",
-    "imgur-search": "^1.0.1",
-    "request": "2.81.0",
-    "scripts": {
-      "test": "jshint L-L_Mentor.js"
-    },
-    "urban": "^0.2.4"
+  "discord.js": "^11.2.1",
+  "giphy-wrapper": "ptte/node-giphy",
+  "imgur-search": "^1.0.1",
+  "request": "2.81.0",
+  "scripts": {
+    "test": "jshint L-L_Mentor.js"
+  },
+  "urban": "^0.2.4",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "libsodium-wrappers": "^0.7.3",
+    "npm": "^5.8.0",
+    "opusscript": "0.0.6",
+    "uws": "^9.14.0"
   }
+}
