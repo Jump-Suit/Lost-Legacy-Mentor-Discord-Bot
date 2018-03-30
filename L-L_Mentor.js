@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const config = require("./botconfig.json");
+const bot = new Discord.Client();
+const config = require("./config.json");
 const fs = require("fs");
 
-client.login(config.token);
+bot.login(config.token);
 
 // Accessing Commands for the Bot Individually
 
-client.commands = new Discord.Collection();
+bot.commands = new Discord.Collection();
 
 fs.readdir("./cmds/", (err, files) => {
     if(err) console.error(err);
@@ -23,24 +23,24 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`$(i + 1}: ${f} loaded!`);
-        client.commands.set(f, props);
+        bot.commands.set(f, props);
     });
 });
 
 // Listener Event: Bot Launcher
 
-client.on('ready', () => { // Boots Bot
-    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds. ${ bot.user.username }`);
-    console.log(client.cmds);
-    client.user.setGame(`on ${client.guilds.size} servers`);
+bot.on('ready', () => { // Boots Bot
+    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds. ${bot.user.username }`);
+    console.log(bot.cmds);
+    bot.user.setGame(`on ${bot.guilds.size} servers`);
 });
 
-client.on('disconnected', function () { // Disconnects Bot
+bot.on('disconnected', function () { // Disconnects Bot
     console.log('Disconnected.');
     process.exit(1);
 });
 
-client.on("message", async message => {
+bot.on("message", async message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
     if (message.content.indexOf(config.prefix) !== 0) return;
 
@@ -52,12 +52,12 @@ client.on("message", async message => {
     if (!commands.startWith(prefix)) return;
 
     let cmd = bot.commands.get(command.slice(prefix.length))
-    if (cmd) cmd.run(client, message, args);
+    if (cmd) cmd.run(bot, message, args);
   
     })
 
 
-client.on('message', message => { // add/remove StarMade role
+bot.on('message', message => { // add/remove StarMade role
     if (message.content === (config.prefix + "addstarmade")) {
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));
@@ -86,7 +86,7 @@ client.on('message', message => { // add/remove StarMade role
         }
     }
 })
-client.on('message', message => { // add/remove Minecraft role
+bot.on('message', message => { // add/remove Minecraft role
     if (message.content === (config.prefix + "addminecraft")) {
         let myRole = message.guild.roles.find("name", "Minecraft");
         console.log(message.member.roles.has(myRole.id));
@@ -115,7 +115,7 @@ client.on('message', message => { // add/remove Minecraft role
         }
     }
 })
-client.on('message', message => { // add/remove Warframe role
+bot.on('message', message => { // add/remove Warframe role
     if (message.content === (config.prefix + "addwarframe")) {
         let myRole = message.guild.roles.find("name", "Warframe");
         console.log(message.member.roles.has(myRole.id));
@@ -146,7 +146,7 @@ client.on('message', message => { // add/remove Warframe role
 })
 
 //Listener Event: User joining the discord server.
-client.on('guildMemberAdd', member => {
+bot.on('guildMemberAdd', member => {
     
     console.log('User ' + member.username + ' has joined the server!') // Sends a message in console that someone joined the discord server.
   
@@ -155,7 +155,7 @@ client.on('guildMemberAdd', member => {
     // Secondly, we will add the role.
     member.addRole(role)
 });
-client.on('message', message => { // Displays Help for Commands
+bot.on('message', message => { // Displays Help for Commands
     if (message.content === (config.prefix + "help")) {  
         let member = message.member;
 
