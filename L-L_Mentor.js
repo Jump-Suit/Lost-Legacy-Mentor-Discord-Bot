@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const config = require("./botconfig.json");
+const botconfig = require("./botconfig.json");
+const config = require("./config.json");
 const fs = require("fs");
 
-bot.login(config.token);
+bot.login(botconfig.token);
 
 // Accessing Commands for the Bot Individually
 
@@ -23,7 +24,7 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`$(i + 1}: ${f} loaded!`);
-        bot.commands.set(f, props);
+        bot.commands.set(props.help.name, props);
     });
 });
 
@@ -41,8 +42,8 @@ bot.on('disconnected', function () { // Disconnects Bot
 });
 
 bot.on("message", async message => {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
-    if (message.content.indexOf(config.prefix) !== 0) return;
+    if (!message.content.startsWith(botconfig.prefix) || message.author.bot) return;
+    if (message.content.indexOf(botconfig.prefix) !== 0) return;
 
 
     let messageArray = message.content.sp0lit(/\s+/g);
@@ -58,7 +59,7 @@ bot.on("message", async message => {
 
 
 bot.on('message', message => { // add/remove StarMade role
-    if (message.content === (config.prefix + "addstarmade")) {
+    if (message.content === (botconfig.prefix + "addstarmade")) {
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -71,7 +72,7 @@ bot.on('message', message => { // add/remove StarMade role
             member.addRole(myRole.id).catch(console.error);
         }
     }
-    if (message.content === (config.prefix + "removestarmade")) {
+    if (message.content === (botconfig.prefix + "removestarmade")) {
         let member = message.member;
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));
@@ -87,7 +88,7 @@ bot.on('message', message => { // add/remove StarMade role
     }
 })
 bot.on('message', message => { // add/remove Minecraft role
-    if (message.content === (config.prefix + "addminecraft")) {
+    if (message.content === (botconfig.prefix + "addminecraft")) {
         let myRole = message.guild.roles.find("name", "Minecraft");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -100,7 +101,7 @@ bot.on('message', message => { // add/remove Minecraft role
             member.addRole(myRole.id).catch(console.error);
         }
     }
-    if (message.content === (config.prefix + "removeminecraft")) {
+    if (message.content === (botconfig.prefix + "removeminecraft")) {
         let member = message.member;
         let myRole = message.guild.roles.find("name", "Minecraft");
         console.log(message.member.roles.has(myRole.id));
@@ -116,7 +117,7 @@ bot.on('message', message => { // add/remove Minecraft role
     }
 })
 bot.on('message', message => { // add/remove Warframe role
-    if (message.content === (config.prefix + "addwarframe")) {
+    if (message.content === (botconfig.prefix + "addwarframe")) {
         let myRole = message.guild.roles.find("name", "Warframe");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -129,7 +130,7 @@ bot.on('message', message => { // add/remove Warframe role
             member.addRole(myRole.id).catch(console.error);
         }
     }
-    if (message.content === (config.prefix + "removewarframe")) { 
+    if (message.content === (botconfig.prefix + "removewarframe")) { 
         let member = message.member;
         let myRole = message.guild.roles.find("name", "Warframe");
         console.log(message.member.roles.has(myRole.id));
@@ -156,7 +157,7 @@ bot.on('guildMemberAdd', member => {
     member.addRole(role)
 });
 bot.on('message', message => { // Displays Help for Commands
-    if (message.content === (config.prefix + "help")) {  
+    if (message.content === (botconfig.prefix + "help")) {  
         let member = message.member;
 
 

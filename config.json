@@ -1,27 +1,16 @@
 {
-
-  "discord": {
-    "email": "JumpSuitGamer@gmail.com",
-    "password": "esmgb504"
-  },
-  "keywords": {
-    "Help": ".commands",
-    "Giphy": ".giphy",
-    "Imgur": ".img",
-    "Urban": ".define"
-  },
-  "giphy_key": "dc6zaTOxFJmzC",
-  "imgur_key": "",
-  "twitch": {
-    "client_id": "",
-    "username": "JumpSuitAscended",
-    "password": "esmgb504",
-    "scope": "user_read"
-  },
   "database": {
     "database": "",
     "host": "127.0.0.1",
     "password": "",
     "user": ""
-  }
+  },
+  "giphy_key": "dc6zaTOxFJmzC",
+  "imgur_key": "",
+  "keywords": {
+    "Help": ".commands",
+    "Imgur": ".img",
+    "Urban": ".define"
+  },
+
 }
