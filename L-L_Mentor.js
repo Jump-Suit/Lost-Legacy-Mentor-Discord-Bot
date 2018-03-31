@@ -1,16 +1,13 @@
-/*jshint esversion: 6 */
-
 const Discord = require('discord.js');
-const bot = new Discord.Client();
-const botconfig = require("./botconfig.json");
-const config = require("./config.json");
+const client = new Discord.Client();
+const config = require("./botconfig.json");
 const fs = require("fs");
 
-bot.login(botconfig.token);
+client.login(config.token);
 
 // Accessing Commands for the Bot Individually
 
-bot.commands = new Discord.Collection();
+client.commands = new Discord.Collection();
 
 fs.readdir("./cmds/", (err, files) => {
     if(err) console.error(err);
@@ -26,43 +23,53 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`$(i + 1}: ${f} loaded!`);
-        const newLocal = props.help.name;
-
-        bot.commands.set(newLocal, props);
+        client.commands.set(props.help.name, props);
     });
-});
-
-bot.on("message", async message => {
-    if (!message.content.startsWith(botconfig.prefix) || message.author.bot) return;
-
-    if (message.content.indexOf(botconfig.prefix) !== 0) return;
-
-
-    let messageArray = message.content.sp0lit(/\s+/g);
-    let command = messageArray[0];
-    let args = messageArray.slice(1);
-
-    if (!commands.startWith(prefix)) return;
-
-    let cmd = bot.commands.get(command.slice(prefix.length));
-    if (cmd) cmd.run(bot, message, args);
 });
 
 // Listener Event: Bot Launcher
 
-bot.on('ready', () => { // Boots Bot
-    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds. ${bot.user.username }`);
-    console.log(bot.cmds);
-    bot.user.setGame(`on ${bot.guilds.size} servers`);
+client.on('ready', () => { // Boots Bot
+    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds. ${ bot.user.username }`);
+    console.log(client.cmds);
+    client.user.setGame(`on ${client.guilds.size} servers`);
 });
 
-bot.on('disconnected', function () { // Disconnects Bot
+client.on('disconnected', function () { // Disconnects Bot
     console.log('Disconnected.');
     process.exit(1);
 });
 
-bot.on('message', message => { // add/remove StarMade role
-    if (message.content === (botconfig.prefix + "addstarmade")) {
+client.on("message", async message => {
+    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if (message.content.indexOf(config.prefix) !== 0) return;
+
+    if (!commands.startWuth(prefix)) return;
+    
+    let cmd = bot.commands.get(command.slice(prefix.length))
+    if (cmd) cmd.run(bot, client, args);
+    }
+});
+
+client.on("message", message => { // Kick command
+    if (command === "kick") {
+        if (message.member.roles.some(r => ["Administrator", "Moderator"].includes(r.name)))
+            return message.reply("Sorry, you don't have permissions to use this!");
+        let member = message.mentions.members.first();
+        if (!member)
+            return message.reply("Please mention a valid member of this server");
+        if (!member.kickable)
+            return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+        let reason = args.slice(1).join(' ');
+        if (!reason)
+            return message.reply("Please indicate a reason for the kick!");
+        await member.kick(reason)
+        console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+        message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+    })
+
+client.on('message', message => { // add/remove StarMade role
+    if (message.content === (config.prefix + "addstarmade")) {
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -71,11 +78,11 @@ bot.on('message', message => { // add/remove StarMade role
         } else {
             console.log(`Nope, noppers, nadda.2`);
             let member = message.member;
-            message.channel.send("Added to Role!");
+                message.channel.send("Added to Role!");
             member.addRole(myRole.id).catch(console.error);
         }
     }
-    if (message.content === (botconfig.prefix + "removestarmade")) {
+    if (message.content === (config.prefix + "removestarmade")) {
         let member = message.member;
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));
@@ -89,9 +96,9 @@ bot.on('message', message => { // add/remove StarMade role
             message.channel.send("Sorry, but it appears you are already have StarMade...");
         }
     }
-});
-bot.on('message', message => { // add/remove Minecraft role
-    if (message.content === (botconfig.prefix + "addminecraft")) {
+})
+client.on('message', message => { // add/remove Minecraft role
+    if (message.content === (config.prefix + "addminecraft")) {
         let myRole = message.guild.roles.find("name", "Minecraft");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -104,7 +111,7 @@ bot.on('message', message => { // add/remove Minecraft role
             member.addRole(myRole.id).catch(console.error);
         }
     }
-    if (message.content === (botconfig.prefix + "removeminecraft")) {
+    if (message.content === (config.prefix + "removeminecraft")) {
         let member = message.member;
         let myRole = message.guild.roles.find("name", "Minecraft");
         console.log(message.member.roles.has(myRole.id));
@@ -119,8 +126,8 @@ bot.on('message', message => { // add/remove Minecraft role
         }
     }
 })
-bot.on('message', message => { // add/remove Warframe role
-    if (message.content === (botconfig.prefix + "addwarframe")) {
+client.on('message', message => { // add/remove Warframe role
+    if (message.content === (config.prefix + "addwarframe")) {
         let myRole = message.guild.roles.find("name", "Warframe");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -133,7 +140,7 @@ bot.on('message', message => { // add/remove Warframe role
             member.addRole(myRole.id).catch(console.error);
         }
     }
-    if (message.content === (botconfig.prefix + "removewarframe")) { 
+    if (message.content === (config.prefix + "removewarframe")) { 
         let member = message.member;
         let myRole = message.guild.roles.find("name", "Warframe");
         console.log(message.member.roles.has(myRole.id));
@@ -150,7 +157,7 @@ bot.on('message', message => { // add/remove Warframe role
 })
 
 //Listener Event: User joining the discord server.
-bot.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
     
     console.log('User ' + member.username + ' has joined the server!') // Sends a message in console that someone joined the discord server.
   
@@ -159,8 +166,8 @@ bot.on('guildMemberAdd', member => {
     // Secondly, we will add the role.
     member.addRole(role)
 });
-bot.on('message', message => { // Displays Help for Commands
-    if (message.content === (botconfig.prefix + "help")) {  
+client.on('message', message => { // Displays Help for Commands
+    if (message.content === (config.prefix + "help")) {  
         let member = message.member;
 
 
