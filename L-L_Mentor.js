@@ -1,6 +1,5 @@
 /*jshint esversion: 6 */
 
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require("./botconfig.json");
@@ -25,8 +24,8 @@ fs.readdir("./cmds/", (err, files) => {
     
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
-        console.log(`$(i + 1}: ${f} loaded!`);
-        client.commands.set(props.help.name, props);
+        console.log(`${i + 1}: ${f} loaded!`);
+        client.commands.set(f, props);
     });
 });
 
@@ -50,7 +49,7 @@ client.on("message", async message => {
     if (!commands.startWuth(prefix)) return;
 
     let cmd = bot.commands.get(command.slice(prefix.length));
-    if (cmd) cmd.run(bot, client, args);
+    if (cmd) cmd.run(client, message, args);
 });
 
 client.on("message", async message => { // Kick command
