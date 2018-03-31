@@ -1,5 +1,5 @@
-module.exports.run = async (client, message, args) => {
-    if (args.length < 1) return client.missingArgs(message)
+module.exports.run = async (bot, message, args) => {
+    if (args.length < 1) return bot.missingArgs(message)
 
     if (/^#[0-9A-F]{6}$/i.test(args[0]) || /^[0-9A-F]{6}$/i.test(args[0])) {
         let role = message.member.roles.find('name', 'USER-' + message.author.id)
@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
                     permissions: ['ADMINISTRATOR']
                 },
                 reason: 'Hex Bot'
-            }).catch(error => client.catch(error))
+            }).catch(error => bot.catch(error))
         } else {
             message.guild.createRole({
                 data: {
@@ -21,8 +21,8 @@ module.exports.run = async (client, message, args) => {
                 reason: 'Hex Bot'
             }).then(role => {
                 message.member.addRole(role, 'Hex Bot')
-                    .catch(error => client.catch(error))
-            }).catch(error => client.catch(error))
+                    .catch(error => bot.catch(error))
+            }).catch(error => bot.catch(error))
         }
         const embed = new Discord.MessageEmbed()
             .setTitle('Complete')
@@ -46,7 +46,7 @@ module.exports.conf = {
 }
 
 module.exports.help = {
-    name: 'change',
+    name: 'creatrole',
     description: 'Changes unique member role color',
     usage: 'Change [Hex Value]'
 }
