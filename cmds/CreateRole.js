@@ -46,7 +46,7 @@ module.exports.conf = {
 }
 
 module.exports.help = {
-    name: 'creatrole',
+    name: 'createrole',
     description: 'Changes unique member role color',
     usage: 'Change [Hex Value]'
 }
