@@ -1,3 +1,6 @@
+/*jshint esversion: 6 */
+
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require("./botconfig.json");
