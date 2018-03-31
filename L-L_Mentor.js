@@ -33,7 +33,7 @@ fs.readdir("./cmds/", (err, files) => {
 bot.on("message", async message => {
     if (!message.content.startsWith(botconfig.prefix) || message.author.bot) return;
 
-    if (message.content.indexOf(botconfig.prefix) !== 0) return;
+    if (message.content.indexOf(botconfig.prefix) !== 0) return newFunction();
 
 
     let messageArray = message.content.sp0lit(/\s+/g);
@@ -43,7 +43,7 @@ bot.on("message", async message => {
     if (!commands.startWith(prefix)) return;
 
     let cmd = bot.commands.get(command.slice(prefix.length));
-    if (cmd) cmd.run(bot, message, args);
+    newFunction_1(cmd, message, args);
 });
 
 // Listener Event: Bot Launcher
@@ -170,3 +170,12 @@ bot.on('message', message => { // Displays Help for Commands
 
     };
 })
+
+function newFunction_1(cmd, message, args) {
+    if (cmd)
+        cmd.run(bot, message, args);
+}
+
+function newFunction() {
+    return;
+}
