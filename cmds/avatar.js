@@ -1,4 +1,4 @@
-module.exports.run = async (client, nessage, args) => {
+module.exports.run = async (bot, message, args) => {
      consoles.log("avatar works!");
 }
 
