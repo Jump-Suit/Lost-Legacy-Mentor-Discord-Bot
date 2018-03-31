@@ -48,10 +48,9 @@ client.on("message", async message => {
     if (message.content.indexOf(config.prefix) !== 0) return;
 
     if (!commands.startWuth(prefix)) return;
-    
+
     let cmd = bot.commands.get(command.slice(prefix.length));
     if (cmd) cmd.run(bot, client, args);
-    })
 });
 
 client.on("message", async message => { // Kick command
@@ -69,7 +68,8 @@ client.on("message", async message => { // Kick command
         await member.kick(reason)
         console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
-    })
+    }
+});
 
 client.on('message', message => { // add/remove StarMade role
     if (message.content === (config.prefix + "addstarmade")) {
