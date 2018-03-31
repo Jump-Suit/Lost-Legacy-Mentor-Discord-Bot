@@ -1,5 +1,3 @@
-/*jshint esversion: 6 */
-
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const botconfig = require("./botconfig.json");
@@ -30,19 +28,6 @@ fs.readdir("./cmds/", (err, files) => {
     });
 });
 
-// Listener Event: Bot Launcher
-
-bot.on('ready', () => { // Boots Bot
-    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds. ${bot.user.username }`);
-    console.log(bot.cmds);
-    bot.user.setGame(`on ${bot.guilds.size} servers`);
-});
-
-bot.on('disconnected', function () { // Disconnects Bot
-    console.log('Disconnected.');
-    process.exit(1);
-});
-
 bot.on("message", async message => {
     if (!message.content.startsWith(botconfig.prefix) || message.author.bot) return;
 
@@ -59,6 +44,18 @@ bot.on("message", async message => {
     if (cmd) cmd.run(bot, message, args);
 });
 
+// Listener Event: Bot Launcher
+
+bot.on('ready', () => { // Boots Bot
+    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds. ${bot.user.username }`);
+    console.log(bot.cmds);
+    bot.user.setGame(`on ${bot.guilds.size} servers`);
+});
+
+bot.on('disconnected', function () { // Disconnects Bot
+    console.log('Disconnected.');
+    process.exit(1);
+});
 
 bot.on('message', message => { // add/remove StarMade role
     if (message.content === (botconfig.prefix + "addstarmade")) {
