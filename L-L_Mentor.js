@@ -26,25 +26,24 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`$(i + 1}: ${f} loaded!`);
-        const newLocal = props.help.name;
-        bot.commands.set(newLocal, props);
+        bot.commands.set(props.help.name, props);
     });
 });
 
 bot.on("message", async message => {
     if (!message.content.startsWith(botconfig.prefix) || message.author.bot) return;
 
-    if (message.content.indexOf(botconfig.prefix) !== 0) return newFunction();
+    if (message.content.indexOf(botconfig.prefix) !== 0) return;
 
 
     let messageArray = message.content.sp0lit(/\s+/g);
     let command = messageArray[0];
     let args = messageArray.slice(1);
 
-    if (!commands.startWith(prefix)) return newFunction_2();
+    if (!commands.startWith(prefix)) return;
 
     let cmd = bot.commands.get(command.slice(prefix.length));
-    newFunction_1(cmd, message, args);
+    if (cmd) cmd.run(bot, message, args);
 });
 
 // Listener Event: Bot Launcher
@@ -171,16 +170,3 @@ bot.on('message', message => { // Displays Help for Commands
 
     };
 })
-
-function newFunction_2() {
-    return;
-}
-
-function newFunction_1(cmd, message, args) {
-    if (cmd)
-        cmd.run(bot, message, args);
-}
-
-function newFunction() {
-    return;
-}
