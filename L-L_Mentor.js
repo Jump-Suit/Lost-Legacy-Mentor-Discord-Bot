@@ -25,7 +25,7 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`${i + 1}: ${f} loaded!`);
-        client.commands.set(f, props);
+        client.commands.set(props.help.name, props);
     });
 });
 
@@ -34,7 +34,7 @@ fs.readdir("./cmds/", (err, files) => {
 client.on('ready', () => { // Boots Bot
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
     console.log(client.cmds);
-    client.user.setGame(`on ${client.guilds.size} servers`);
+    client.user.setActivity(`on ${client.guilds.size} servers`);
 });
 
 client.on('disconnected', function () { // Disconnects Bot
