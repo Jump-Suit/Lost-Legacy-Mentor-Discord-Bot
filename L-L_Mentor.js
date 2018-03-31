@@ -45,6 +45,7 @@ bot.on('disconnected', function () { // Disconnects Bot
 
 bot.on("message", async message => {
     if (!message.content.startsWith(botconfig.prefix) || message.author.bot) return;
+
     if (message.content.indexOf(botconfig.prefix) !== 0) return;
 
 
