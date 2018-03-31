@@ -26,7 +26,8 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`$(i + 1}: ${f} loaded!`);
-        bot.commands.set(f, props);
+        const newLocal = props.help.name;
+        bot.commands.set(newLocal, props);
     });
 });
 
@@ -40,7 +41,7 @@ bot.on("message", async message => {
     let command = messageArray[0];
     let args = messageArray.slice(1);
 
-    if (!commands.startWith(prefix)) return;
+    if (!commands.startWith(prefix)) return newFunction_2();
 
     let cmd = bot.commands.get(command.slice(prefix.length));
     newFunction_1(cmd, message, args);
@@ -170,6 +171,10 @@ bot.on('message', message => { // Displays Help for Commands
 
     };
 })
+
+function newFunction_2() {
+    return;
+}
 
 function newFunction_1(cmd, message, args) {
     if (cmd)
