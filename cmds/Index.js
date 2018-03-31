@@ -1,6 +1,5 @@
 var env = require('../config.json'),
-    Help = require('./Help.js'),
-    Urban = require('./Urban.js');
+    Help = require('./Help.js');
 
 class LLBot {
     constructor() {
