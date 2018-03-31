@@ -24,7 +24,7 @@ fs.readdir("./cmds/", (err, files) => {
     console.log(`Loading ${jsfiles.length} commands`);
     
     jsfiles.forEach((f, i) => {
-        let props = require(`./cmds/${f}`)
+        let props = require(`./cmds/${f}`);
         console.log(`$(i + 1}: ${f} loaded!`);
         bot.commands.set(props.help.name, props);
     });
@@ -54,9 +54,9 @@ bot.on("message", async message => {
 
     if (!commands.startWith(prefix)) return;
 
-    let cmd = bot.commands.get(command.slice(prefix.length))
+    let cmd = bot.commands.get(command.slice(prefix.length));
     if (cmd) cmd.run(bot, message, args);
-    })
+});
 
 
 bot.on('message', message => { // add/remove StarMade role
@@ -69,7 +69,7 @@ bot.on('message', message => { // add/remove StarMade role
         } else {
             console.log(`Nope, noppers, nadda.2`);
             let member = message.member;
-                message.channel.send("Added to Role!");
+            message.channel.send("Added to Role!");
             member.addRole(myRole.id).catch(console.error);
         }
     }
@@ -87,7 +87,7 @@ bot.on('message', message => { // add/remove StarMade role
             message.channel.send("Sorry, but it appears you are already have StarMade...");
         }
     }
-})
+});
 bot.on('message', message => { // add/remove Minecraft role
     if (message.content === (botconfig.prefix + "addminecraft")) {
         let myRole = message.guild.roles.find("name", "Minecraft");
