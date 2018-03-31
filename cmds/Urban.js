@@ -20,5 +20,8 @@ class UrbanModule {
     }
 }
 
+module.exports.help = {
+    name: "urban"
+}
 
 module.exports = UrbanModule;

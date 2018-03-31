@@ -1,4 +1,4 @@
-exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     if (args.length < 1) return client.missingArgs(message)
 
     if (/^#[0-9A-F]{6}$/i.test(args[0]) || /^[0-9A-F]{6}$/i.test(args[0])) {
@@ -39,13 +39,13 @@ exports.run = async (client, message, args) => {
     }
 }
 
-exports.conf = {
+module.exports.conf = {
     enabled: true,
     guildOnly: false,
     aliases: ['hex', 'color', 'colour']
 }
 
-exports.help = {
+module.exports.help = {
     name: 'change',
     description: 'Changes unique member role color',
     usage: 'Change [Hex Value]'
