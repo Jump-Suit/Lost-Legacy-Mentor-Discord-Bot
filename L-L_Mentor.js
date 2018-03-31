@@ -32,7 +32,7 @@ fs.readdir("./cmds/", (err, files) => {
 // Listener Event: Bot Launcher
 
 client.on('ready', () => { // Boots Bot
-    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds. ${ bot.user.username }`);
+    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
     console.log(client.cmds);
     client.user.setGame(`on ${client.guilds.size} servers`);
 });
