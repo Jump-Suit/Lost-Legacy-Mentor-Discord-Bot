@@ -12,9 +12,7 @@
   "keywords": [
     "L-L_Mentor"
   ],
-  "devDependencies": {
-    "jshint": "^2.6.0"
-  },
+  "devDependencies": {},
   "discord.js": "^11.2.1",
   "giphy-wrapper": "ptte/node-giphy",
   "imgur-search": "^1.0.1",
