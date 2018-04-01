@@ -47,12 +47,6 @@ module.exports.conf = {
 
 newFunction();
 
-newFunction_1();
-
-function newFunction_1() {
-    module.exports = CreateRoleModule;
-}
-
 function newFunction() {
     module.exports.help = {
         name: 'createrole',
