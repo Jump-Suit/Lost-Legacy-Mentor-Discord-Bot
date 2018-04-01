@@ -20,16 +20,8 @@ class UrbanModule {
     }
 }
 
-newFunction();
+module.exports = UrbanModule;
 
-newFunction_1();
-
-function newFunction_1() {
-    module.exports = UrbanModule;
-}
-
-function newFunction() {
-    module.exports.help = {
+module.exports.help = {
         name: "urban"
-    };
-}
+};
