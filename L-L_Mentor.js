@@ -25,7 +25,7 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`${i + 1}: ${f} loaded!`);
-        console.log(context.getFileName()) // File source
+        console.log(context.getFileName()); // File source
         client.commands.set(props.help.name, props);
     });
 });
