@@ -25,35 +25,44 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`${i + 1}: ${f} loaded!`);
-        console.log(context.getFileName()); // File source
         client.commands.set(props.help.name, props);
     });
 });
 
-// Listener Event: Bot Launcher
-
-client.on('ready', () => { // Boots Bot
-    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-    console.log(client.cmds);
-    client.user.setActivity(`on ${client.guilds.size} servers`);
-});
-
-client.on('disconnected', function () { // Disconnects Bot
-    console.log('Disconnected.');
-    process.exit(1);
-});
-
 client.on("message", async message => {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
-    if (message.content.indexOf(config.prefix) !== 0) return;
+    if (message.author.bot) return;
+    if (message.channel.type === "dm") return;
 
-    if (!commands.startWuth(prefix)) return;
+    let messageArray = message.content.split(/\s+/g);
+    let command = messageArray[0];
+    let args = messageArray.slice(1);
+
+    if (!command.startWith(prefix)) return;
 
     let cmd = bot.commands.get(command.slice(prefix.length));
     if (cmd) cmd.run(client, message, args);
 });
 
-client.on("message", async message => { // Kick command
+// Listener Event: Bot Launcher
+
+// Boots Bot
+
+client.on('ready', () => { 
+    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+    console.log(client.cmds);
+    client.user.setActivity(`on ${client.guilds.size} servers`);
+});
+
+// Disconnects Bot
+
+client.on('disconnected', function () { 
+    console.log('Disconnected.');
+    process.exit(1);
+});
+
+// Kick command
+
+client.on("message", async message => { 
     if (command === "kick") {
         if (message.member.roles.some(r => ["Administrator", "Moderator"].includes(r.name)))
             return message.reply("Sorry, you don't have permissions to use this!");
@@ -71,7 +80,9 @@ client.on("message", async message => { // Kick command
     }
 });
 
-client.on('message', message => { // add/remove StarMade role
+// add/remove StarMade role
+
+client.on('message', message => { 
     if (message.content === (config.prefix + "addstarmade")) {
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));

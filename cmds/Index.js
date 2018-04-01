@@ -39,6 +39,10 @@ class LLBot {
 }
 
 module.exports = LLBot;
-module.exports.help = {
-    name: 'createrole',
-};
+newFunction();
+
+function newFunction() {
+    module.exports.help = {
+        name: 'createrole',
+    };
+}

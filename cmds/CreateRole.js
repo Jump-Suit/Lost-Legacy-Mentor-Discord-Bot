@@ -45,10 +45,14 @@ module.exports.conf = {
     aliases: ['hex', 'color', 'colour']
 }
 
-module.exports.help = {
-    name: 'createrole',
-    description: 'Changes unique member role color',
-    usage: 'Change [Hex Value]'
-}
+newFunction();
 
 module.exports = CreateRoleModule;
+
+function newFunction() {
+    module.exports.help = {
+        name: 'createrole',
+        description: 'Changes unique member role color',
+        usage: 'Change [Hex Value]'
+    };
+}
