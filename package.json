@@ -1,8 +1,8 @@
 {
   "name": "Lost-Legacy-Mentor-Bot",
   "repository": {
-    "type": "js",
-    "url": "https://github.com/Jump-Suit/Lost-Legacy-Mentor-Discord-Bot/blob/master/L-L_Mentor.js"
+    "type": "git",
+    "url": "https://github.com/Jump-Suit/Lost-Legacy-Mentor-Discord-Bot/"
   },
   "version": "0.0.2",
   "description": "Lost-Legacy Mentor Bot for Lost-Legacy Comms",
@@ -18,7 +18,7 @@
   "imgur-search": "^1.0.1",
   "request": "2.81.0",
   "scripts": {
-    "test": "jshint L-L_Mentor.js"
+    "test": "eslint L-L_Mentor.js"
   },
   "urban": "^0.2.4",
   "dependencies": {
