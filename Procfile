@@ -1,1 +1,1 @@
-worker: nodemon L-L_Mentor.js
+worker: node L-L_Mentor.js
