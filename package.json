@@ -25,6 +25,7 @@
   "dependencies": {
     "eslint": "4.19.1",
     "npm": "5.8.0",
+    "grunt": "1.0.2",
     "bufferutil": "3.0.3",
     "erlpack": "discordapp/erlpack",
     "node-opus": "0.2.7",
