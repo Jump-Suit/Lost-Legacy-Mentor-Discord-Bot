@@ -20,3 +20,7 @@ HelpModule.prototype.Message = function (keywords, message, callback) {
 }
 
 module.exports = HelpModule;
+
+module.exports.help = {
+    name: "help"
+};
