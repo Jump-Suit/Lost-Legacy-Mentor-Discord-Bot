@@ -13,7 +13,7 @@
     "L-L_Mentor"
   ],
   "devDependencies": {},
-  "discord.js": "^11.2.1",
+  "discord.js": "^11.3.2",
   "giphy-wrapper": "ptte/node-giphy",
   "imgur-search": "^1.0.1",
   "request": "2.81.0",
@@ -22,6 +22,8 @@
   },
   "urban": "^0.2.4",
   "dependencies": {
-    "discord.js": "^11.3.2"
+    "discord.js": "^11.3.2",
+    "eslint": "4.19.1"
+
   }
 }
