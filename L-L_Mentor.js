@@ -25,7 +25,7 @@ fs.readdir("./cmds/", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
         console.log(`${i + 1}: ${f} loaded!`);
-        client.commands.set(f, props);
+        client.commands.set(props.help.name, props);
     });
 });
 
@@ -171,6 +171,7 @@ client.on('message', message => { // add/remove Warframe role
 })
 
 //Listener Event: User joining the discord server.
+
 client.on('guildMemberAdd', member => {
     
     console.log('User ' + member.username + ' has joined the server!') // Sends a message in console that someone joined the discord server.
@@ -180,6 +181,7 @@ client.on('guildMemberAdd', member => {
     // Secondly, we will add the role.
     member.addRole(role)
 });
+
 client.on('message', message => { // Displays Help for Commands
     if (message.content === (config.prefix + "help")) {  
         let member = message.member;
