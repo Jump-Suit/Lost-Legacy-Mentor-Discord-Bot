@@ -18,6 +18,8 @@
   "imgur-search": "^1.0.1",
   "request": "2.81.0",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint **/*.js",
+    "build": "...",
     "test": "jshint L-L_Mentor.js"
   },
   "urban": "^0.2.4",
