@@ -55,7 +55,7 @@ client.on("ready", () => {
 
 // Disconnects Bot
 
-client.on(:"disconnected", function () { 
+client.on("disconnected", function () { 
     Console.log('Disconnected.');
     process.exit(1);
 });
