@@ -4,7 +4,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
-const cmdconfig = require("./cmd-config.json")
 const fs = require("fs");
 
 client.login(config.token);
@@ -52,7 +51,7 @@ client.on("message", async  message => {
 client.on("ready", () => { 
     console.log("Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.");
     console.log(client.cmds);
-    client.user.setActivity('on ${client.guilds.size} servers');
+    client.user.setActivity("on ${client.guilds.size} servers");
 });
 
 // Disconnects Bot
