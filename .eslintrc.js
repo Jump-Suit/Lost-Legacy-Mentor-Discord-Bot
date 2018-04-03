@@ -10,7 +10,7 @@ module.exports = {
     },
     "parser": "babel-eslint",
     "rules": {
-        "no-console": 0,
+        "no-console": "off",
         "strict": 0,
         "indent": [
             "error",
