@@ -1,4 +1,4 @@
-/*eslint no-console: "error"*/
+/* eslint-disable no-console */
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
