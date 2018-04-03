@@ -1,4 +1,4 @@
-var env = require('../config.json'),
+var env = require('../cmd-config.json'),
     Help = require('./Help.js');
 
 class LLBot {
@@ -41,5 +41,5 @@ class LLBot {
 module.exports = LLBot;
 
 module.exports.help = {
-    name: 'createrole',
+    name: 'index',
 };

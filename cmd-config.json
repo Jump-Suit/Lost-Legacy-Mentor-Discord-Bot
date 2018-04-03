@@ -1,0 +1,15 @@
+{
+  "database": {
+    "database": "",
+    "host": "127.0.0.1",
+    "password": "",
+    "user": ""
+  },
+  "giphy_key": "dc6zaTOxFJmzC",
+  "imgur_key": "",
+  "keywords": {
+    "Help": ".commands",
+    "Imgur": ".img",
+    "Urban": ".define"
+  }
+}

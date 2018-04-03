@@ -1,4 +1,4 @@
-var env = require('../config.json');
+var env = require('../cmd-config.json');
 
 var HelpModule = function () {
     this.keywords = env.keywords;
