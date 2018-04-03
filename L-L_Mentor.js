@@ -1,3 +1,4 @@
+/*eslint no-undef: "warn"*/
 /* eslint-disable no-console */
 
 const Discord = require("discord.js");
@@ -83,7 +84,7 @@ client.on("message", async message => {
 
 // add/remove StarMade role
 
-client.on('message', message => { 
+client.on("message", message => { 
     if (message.content === (config.prefix + "addstarmade")) {
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));
