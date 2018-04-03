@@ -13,6 +13,8 @@
     "L-L_Mentor"
   ],
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.0.1",
     "eslint-plugin-react": "^7.7.0"
   },
   "discord.js": "^11.3.2",
@@ -28,7 +30,6 @@
   "dependencies": {
     "bufferutil": "3.0.3",
     "erlpack": "discordapp/erlpack",
-    "eslint": "^3.0.0",
     "grunt": "1.0.2",
     "libsodium-wrappers": "0.7.3",
     "node-opus": "0.2.7",
