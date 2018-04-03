@@ -183,7 +183,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => { // Displays Help for Commands
-    if (message.content === (config.prefix + "help")) {  
+    if (message.content === (config.prefix + "help")) {
         let member = message.member;
 
 
@@ -193,5 +193,5 @@ client.on('message', message => { // Displays Help for Commands
 
 
 
-    };
-})
+    }
+});
