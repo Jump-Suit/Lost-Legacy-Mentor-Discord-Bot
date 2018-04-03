@@ -64,7 +64,7 @@ client.on("disconnected", function () {
 // Kick command
 
 client.on("message", async message => { 
-    if (command === "kick") {
+    if (!command === "kick") {
         if (message.member.roles.some(r => ["Administrator", "Moderator"].includes(r.name)))
             return message.reply("Sorry, you don't have permissions to use this!");
         let member = message.mentions.members.first();
@@ -72,7 +72,7 @@ client.on("message", async message => {
             return message.reply("Please mention a valid member of this server");
         if (!member.kickable)
             return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-        let reason = args.slice(1).join(' ');
+        let reason = args.slice(1).join(" ");
         if (!reason)
             return message.reply("Please indicate a reason for the kick!");
         await member.kick(reason);
@@ -99,7 +99,6 @@ client.on("message", message => {
         }
     }
     if (message.content === (config.prefix + "removestarmade")) {
-        let member = message.member;
         let myRole = message.guild.roles.find("name", "StarMade");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -129,7 +128,6 @@ client.on("message", message => { // add/remove Minecraft role
         }
     }
     if (message.content === (config.prefix + "removeminecraft")) {
-        let member = message.member;
         let myRole = message.guild.roles.find("name", "Minecraft");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -159,7 +157,6 @@ client.on("message", message => { // add/remove Warframe role
         }
     }
     if (message.content === (config.prefix + "removewarframe")) {
-        let member = message.member;
         let myRole = message.guild.roles.find("name", "Warframe");
         console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
@@ -178,24 +175,10 @@ client.on("message", message => { // add/remove Warframe role
 
 client.on("guildMemberAdd", member => {
     
-    console.log("User " + member.username + " has joined the server!") // Sends a message in console that someone joined the discord server.
+    console.log("User " + member.username + " has joined the server!"); // Sends a message in console that someone joined the discord server.
   
     // Now, Lets add a role when they join. First, we need to get the role we want.
     var role = member.guild.roles.find("name", "User"); // This looks for the role in the server(guild, it seasrches by name, meaning you can change 'User' to the role you want.
     // Secondly, we will add the role.
-    member.addRole(role)
-});
-
-client.on("message", message => { // Displays Help for Commands
-    if (message.content === (config.prefix + "help")) {
-        let member = message.member;
-
-
-
-
-
-
-
-
-    }
+    member.addRole(role);
 });

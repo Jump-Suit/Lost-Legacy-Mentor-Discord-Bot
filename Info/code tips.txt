@@ -1,5 +1,7 @@
 For a single user simply put this at the start: if (!message.author.id == "YOUR ACCOUNT ID") return message.reply("Sorry but you can't use this command")
+
 For multiply: if (!message.author.some(r=>["ACCOUNT ID1", "ACCOUNT ID2"].includes(r.id)) ) return message.reply("Sorry but you can't use this command")
+
 client.on("message", async message => { // Kick command
     if (command === "kick") {
         if (message.member.roles.some(r => ["Administrator", "Moderator"].includes(r.name)))
@@ -16,3 +18,17 @@ client.on("message", async message => { // Kick command
         console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
     });
+	
+client.on("message", message => { // Displays Help for Commands
+    if (message.content === (config.prefix + "help")) {
+        let member = message.member;
+
+
+
+
+
+
+
+
+    }
+});
