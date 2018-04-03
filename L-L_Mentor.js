@@ -12,19 +12,19 @@ client.login(config.token);
 client.commands = new Discord.Collection();
 
 fs.readdir("./cmds/", (err, files) => {
-    if(err) Console.error(err);
+    if(err) console.error(err);
     
     let jsfiles = files.filter(f => f.split(".").pop() === "js");
     if(jsfiles.length <= 0) {
-        Console.log("No commands to load!");
+        console.log("No commands to load!");
         return;
     }
     
-    Console.log(`Loading ${jsfiles.length} commands`);
+    console.log(`Loading ${jsfiles.length} commands`);
     
     jsfiles.forEach((f, i) => {
         let props = require(`./cmds/${f}`);
-        Console.log(`${i + 1}: ${f} loaded!`);
+        console.log(`${i + 1}: ${f} loaded!`);
         client.commands.set(props.help.name, props);
     });
 });
@@ -48,15 +48,15 @@ client.on("message", async  message => {
 // Boots Bot
 
 client.on("ready", () => { 
-    Console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-    Console.log(client.cmds);
+    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+    console.log(client.cmds);
     client.user.setActivity(`on ${client.guilds.size} servers`);
 });
 
 // Disconnects Bot
 
 client.on("disconnected", function () { 
-    Console.log('Disconnected.');
+    console.log('Disconnected.');
     process.exit(1);
 });
 
@@ -76,7 +76,7 @@ client.on("message", async message => {
             return message.reply("Please indicate a reason for the kick!");
         await member.kick(reason);
 
-        Console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+        console.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
     }
 });
@@ -86,28 +86,28 @@ client.on("message", async message => {
 client.on('message', message => { 
     if (message.content === (config.prefix + "addstarmade")) {
         let myRole = message.guild.roles.find("name", "StarMade");
-        Console.log(message.member.roles.has(myRole.id));
+        console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
-            Console.log(`Yay, the author of the message has the role!`);
+            console.log(`Yay, the author of the message has the role!`);
             message.channel.send("You wot queer???");
         } else {
-            Console.log(`Nope, noppers, nadda.2`);
+            console.log(`Nope, noppers, nadda.2`);
          let member = message.member;
          message.channel.send("Added to Role!");
-            member.addRole(myRole.id).catch(Console.error);
+            member.addRole(myRole.id).catch(console.error);
         }
     }
     if (message.content === (config.prefix + "removestarmade")) {
         let member = message.member;
         let myRole = message.guild.roles.find("name", "StarMade");
-        Console.log(message.member.roles.has(myRole.id));
+        console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
-            Console.log(`Yay, the author of the message has the role! Removing...`);
+            console.log(`Yay, the author of the message has the role! Removing...`);
             let member = message.member;
             message.channel.send("Removed from Role!");
-            member.removeRole(myRole.id).catch(Console.error);
+            member.removeRole(myRole.id).catch(console.error);
         } else {
-            Console.log(`Nope, noppers, nadda.`);
+            console.log(`Nope, noppers, nadda.`);
             message.channel.send("Sorry, but it appears you are already have StarMade...");
         }
     };
@@ -116,28 +116,28 @@ client.on('message', message => {
 client.on('message', message => { // add/remove Minecraft role
     if (message.content === (config.prefix + "addminecraft")) {
         let myRole = message.guild.roles.find("name", "Minecraft");
-        Console.log(message.member.roles.has(myRole.id));
+        console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
-            Console.log(`Yay, the author of the message has the role!`);
+            console.log(`Yay, the author of the message has the role!`);
             message.channel.send("You wot queer???");
         } else {
-            Console.log(`Nope, noppers, nadda.2`);
+            console.log(`Nope, noppers, nadda.2`);
             let member = message.member;
             message.channel.send("Added to Role!");
-            member.addRole(myRole.id).catch(Console.error);
+            member.addRole(myRole.id).catch(console.error);
         }
     }
     if (message.content === (config.prefix + "removeminecraft")) {
         let member = message.member;
         let myRole = message.guild.roles.find("name", "Minecraft");
-        Console.log(message.member.roles.has(myRole.id));
+        console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
-            Console.log(`Yay, the author of the message has the role! Removing...`);
+            console.log(`Yay, the author of the message has the role! Removing...`);
             let member = message.member;
             message.channel.send("Removed from Role!");
-            member.removeRole(myRole.id).catch(Console.error);
+            member.removeRole(myRole.id).catch(console.error);
         } else {
-            Console.log(`Nope, noppers, nadda.`);
+            console.log(`Nope, noppers, nadda.`);
             message.channel.send("Sorry, but it appears you are already have Minecraft...");
         }
     }
@@ -145,28 +145,28 @@ client.on('message', message => { // add/remove Minecraft role
 client.on('message', message => { // add/remove Warframe role
     if (message.content === (config.prefix + "addwarframe")) {
         let myRole = message.guild.roles.find("name", "Warframe");
-        Console.log(message.member.roles.has(myRole.id));
+        console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
-            Console.log(`Yay, the author of the message has the role!`);
+            console.log(`Yay, the author of the message has the role!`);
             message.channel.send("You wot queer???");
         } else {
-            Console.log(`Nope, noppers, nadda.2`);
+            console.log(`Nope, noppers, nadda.2`);
             let member = message.member;
             message.channel.send("Added to Role!");
-            member.addRole(myRole.id).catch(Console.error);
+            member.addRole(myRole.id).catch(console.error);
         }
     }
     if (message.content === (config.prefix + "removewarframe")) { 
         let member = message.member;
         let myRole = message.guild.roles.find("name", "Warframe");
-        Console.log(message.member.roles.has(myRole.id));
+        console.log(message.member.roles.has(myRole.id));
         if (message.member.roles.has(myRole.id)) {
-            Console.log(`Yay, the author of the message has the role! Removing...`);
+            console.log(`Yay, the author of the message has the role! Removing...`);
             let member = message.member;
             message.channel.send("Removed from Role!");
-            member.removeRole(myRole.id).catch(Console.error);
+            member.removeRole(myRole.id).catch(console.error);
         } else {
-            Console.log(`Nope, noppers, nadda.`);
+            console.log(`Nope, noppers, nadda.`);
             message.channel.send("Sorry, but it appears you are already have Warframe...");
         }
     }
@@ -176,7 +176,7 @@ client.on('message', message => { // add/remove Warframe role
 
 client.on('guildMemberAdd', member => {
     
-    Console.log('User ' + member.username + ' has joined the server!') // Sends a message in console that someone joined the discord server.
+    console.log('User ' + member.username + ' has joined the server!') // Sends a message in console that someone joined the discord server.
   
     // Now, Lets add a role when they join. First, we need to get the role we want.
     var role = member.guild.roles.find('name', 'User'); // This looks for the role in the server(guild, it seasrches by name, meaning you can change 'User' to the role you want.
