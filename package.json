@@ -28,6 +28,7 @@
   },
   "urban": "^0.2.4",
   "dependencies": {
+    "discord.js": "^11.3.2",
     "bufferutil": "3.0.3",
     "erlpack": "discordapp/erlpack",
     "grunt": "1.0.2",
