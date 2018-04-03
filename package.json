@@ -20,7 +20,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint **/*.js",
     "build": "...",
-    "test": "jshint L-L_Mentor.js"
+    "test": "eslint L-L_Mentor.js"
   },
   "urban": "^0.2.4",
   "dependencies": {
