@@ -22,7 +22,7 @@ module.exports = {
         ],
         "quotes": [
             "error",
-            "double", "avoid-escape", 
+            "0",
         ],
         "semi": [
             "error",

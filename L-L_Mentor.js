@@ -51,7 +51,7 @@ client.on("message", async  message => {
 client.on("ready", () => { 
     console.log("Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.");
     console.log(client.cmds);
-    client.user.setActivity('on ${client.guilds.size} servers');
+    client.user.setActivity("on ${client.guilds.size} servers");
 });
 
 // Disconnects Bot
