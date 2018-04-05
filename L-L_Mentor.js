@@ -1,8 +1,10 @@
+import { disconnect } from "cluster";
+
 /*eslint no-undef: "warn"*/
 /* eslint-disable no-console */
 
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client(disableEveryone: true);
 const config = require("./config.json");
 const fs = require("fs");
 
@@ -38,7 +40,7 @@ client.on("message", async  message => {
     let command = messageArray[0];
     let args = messageArray.slice(1);
 
-    if (!command.startWith(config.prefix)) return;
+    if (command.startWith(config.prefix)) return;
 
     let cmd = client.commands.get(command.slice(config.prefix.length));
     if (cmd) cmd.run(client, message, args);
@@ -51,7 +53,7 @@ client.on("message", async  message => {
 client.on("ready", () => { 
     console.log('Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.');
     console.log(client.cmds);
-    client.user.setActivity("on ${client.guilds.size} servers");
+    client.user.setActivity('on ${client.guilds.size} servers');
 });
 
 // Disconnects Bot
