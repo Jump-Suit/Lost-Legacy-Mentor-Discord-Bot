@@ -39,7 +39,7 @@ client.on("message", async  message => {
     let command = messageArray[0];
     let args = messageArray.slice(1);
 
-    if (command.startWith(config.prefix)) return;
+    if (!command.startWith(config.prefix)) return;
 
     let cmd = client.commands.get(command.slice(config.prefix.length));
     if (cmd) cmd.run(client, message, args);
