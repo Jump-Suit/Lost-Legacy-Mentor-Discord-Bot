@@ -1,5 +1,9 @@
 # Compiled class file
-*.class
+*.class 
+
+#Hide Individual Files
+*config.json
+
 
 # Log file
 *.log
@@ -17,7 +21,6 @@
 *.zip
 *.tar.gz
 *.rar
-*config.json
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
